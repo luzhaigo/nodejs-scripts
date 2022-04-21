@@ -34,7 +34,9 @@ function* gen() {
 }
 
 const wrapG = {
-  [Symbol.iterator]: gen,
+  [Symbol.iterator]: function* () {
+    yield* gen();
+  },
 };
 
 spread(wrapG);
